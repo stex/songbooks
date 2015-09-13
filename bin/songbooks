@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'active_support/all'
+require 'sinatra'
+require 'haml'
+require 'rtex'
+
+require_relative '../lib/songbooks'
+
+Dir[File.join(Songbooks.lib_dir, '**', '*.rb')].each do |file|
+  require_relative file
+end

@@ -1,0 +1,16 @@
+\documentclass[a5paper,9pt]{article}
+\usepackage{ukesong}
+
+\renewcommand{\familydefault}{\ttdefault}
+\obeyspaces
+
+\begin{document}
+    <% @songs.each do |song| %>
+        \begin{song}{<%= song.title %>}{<%= song.artist %>}
+            \C{<%= song.chords.join(',') %>}
+            <% song.text.lines.each do |line| %>
+                <%= line.chomp %><% unless line.strip == '' %>\newline<% end %>
+            <% end %>
+        \end{song}
+    <% end %>
+\end{document}

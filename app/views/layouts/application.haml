@@ -1,0 +1,39 @@
+!!! 5
+
+%html
+  %head
+    %link{:href => '/stylesheets/bootstrap.min.css', :rel => 'stylesheet'}/
+    %link{:href => '/stylesheets/bootstrap-theme.min.css', :rel => 'stylesheet'}/
+    %link{:href => '/stylesheets/application.css', :rel => 'stylesheet'}/
+    %script{:src => '/javascripts/jquery-2.1.4.min.js', :type => 'text/javascript'}
+
+  %body
+    .container-fluid
+      .row
+        .col-sm-3
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title
+                Verfügbare Lieder
+                %br/
+                %small= Songbooks.chords_directory.path
+            .list-group#file-list
+              - Songbooks.chords_directory.song_list.songs.each do |song|
+                %a.list-group-item{:href => "/songs/#{song.identifier}", :data => {:remote => true}}
+                  = song.title
+                  = ' - '
+                  %i= song.artist
+        .col-sm-6
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title Inhalt
+            .panel-body#main-content
+              = yield
+        .col-sm-3
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title
+                Ausgewählte Lieder
+            .panel-body
+              ll
+
