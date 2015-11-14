@@ -1,4 +1,14 @@
-%h3= @song.title
-%h4= @song.artist
+{{ songCtrl.song.title }}
+%br/
+%em
+  {{ songCtrl.song.artist }}
 
-%pre= @song.text
+%table
+  %tbody
+    %tr{:ng => {:repeat => 'section in songCtrl.song.sections'}}
+      %td.text-right{:style => 'vertical-align: top; padding: 10px; padding-top: 0'}
+        %strong
+          {{ section.name }}
+      %td
+        %div{:ng => {:repeat => 'line in section.lines'}}
+          %song-component{:ng => {:repeat => 'component in line'}}

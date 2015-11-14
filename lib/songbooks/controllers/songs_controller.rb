@@ -7,6 +7,7 @@ module Songbooks
       end
 
       def index
+        @songs    = Songbooks.chords_directory.song_list.songs
         @template = 'songs/index'
       end
 

@@ -13,7 +13,7 @@ module Songbooks
     private
 
     def chords_files
-      Dir[@path.join('**', '*.chords')]
+      Dir[@path.join('**', '*.txt')]
     end
   end
 end

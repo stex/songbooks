@@ -1,12 +1,12 @@
 !!! 5
-
-%html
+%html{'ng-app' => 'songbooks', 'ng-controller' => 'SongsController as songsCtrl'}
   %head
     %link{:href => '/stylesheets/bootstrap.min.css', :rel => 'stylesheet'}/
     %link{:href => '/stylesheets/bootstrap-theme.min.css', :rel => 'stylesheet'}/
     %link{:href => '/stylesheets/application.css', :rel => 'stylesheet'}/
-    %script{:src => '/javascripts/jquery-2.1.4.min.js', :type => 'text/javascript'}
-    %script{:src => '/javascripts/angular.min.js', :type => 'text/javascript'}
+
+    - %w(jquery-2.1.4.min angular angular-route application).each do |file|
+      %script{:src => "/javascripts/#{file}.js", :type => 'text/javascript'}
 
   %body
     .container-fluid
@@ -18,18 +18,22 @@
                 Verfügbare Lieder
                 %br/
                 %small= Songbooks.chords_directory.path
-            .list-group#file-list
-              - Songbooks.chords_directory.song_list.songs.each do |song|
-                %a.list-group-item{:href => "/songs/#{song.identifier}", :data => {:remote => true}}
-                  = song.title
-                  = ' - '
-                  %i= song.artist
+            .list-group
+              %a.list-group-item{:href => '#/songs/{{song.identifier}}', :ng => {:repeat => 'song in songsCtrl.songs'}}
+                {{ song.title }} -
+                %i
+                  {{ song.artist }}
+
         .col-sm-6
           .panel.panel-default
             .panel-heading
               %h3.panel-title Inhalt
-            .panel-body#main-content
-              = yield
+            .panel-body#main-content{:ng => {:view => true}}
+              %div{:ng => {:show => 'songsCtrl.activeSong'}}
+                %h4
+                  {{ songsCtrl.activeSong.title }}
+              %div{:ng => {:hide => 'songsCtrl.activeSong'}}
+                Wählen Sie einen Song aus
         .col-sm-3
           .panel.panel-default
             .panel-heading
