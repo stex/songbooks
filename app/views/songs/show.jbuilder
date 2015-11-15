@@ -1,5 +1,5 @@
 json.data do
-  json.(@song, :title, :artist)
+  json.(@song, :identifier, :title, :artist)
 
   json.sections @song.sections do |section|
     json.(section, :name)

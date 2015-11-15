@@ -1,11 +1,11 @@
-{{ songCtrl.song.title }}
+{{ songCtrl.song().title }}
 %br/
 %em
-  {{ songCtrl.song.artist }}
+  {{ songCtrl.song().artist }}
 
 %table
   %tbody
-    %tr{:ng => {:repeat => 'section in songCtrl.song.sections'}}
+    %tr{:ng => {:repeat => 'section in songCtrl.song().sections'}}
       %td.text-right{:style => 'vertical-align: top; padding: 10px; padding-top: 0'}
         %strong
           {{ section.name }}

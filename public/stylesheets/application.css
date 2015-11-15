@@ -8,3 +8,6 @@ body {
 song-component {
   font-family: "Courier New", Courier, monospace;
   display: inline-block; }
+
+a[ng-click] {
+  cursor: pointer; }

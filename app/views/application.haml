@@ -5,7 +5,7 @@
     %link{:href => '/stylesheets/bootstrap-theme.min.css', :rel => 'stylesheet'}/
     %link{:href => '/stylesheets/application.css', :rel => 'stylesheet'}/
 
-    - %w(jquery-2.1.4.min angular angular-route application).each do |file|
+    - %w(jquery-2.1.4.min angular angular-route application directives filter routes services controller).each do |file|
       %script{:src => "/javascripts/#{file}.js", :type => 'text/javascript'}
 
   %body
@@ -15,11 +15,13 @@
           .panel.panel-default
             .panel-heading
               %h3.panel-title
-                Verfügbare Lieder
+                Available Songs
                 %br/
                 %small= Songbooks.chords_directory.path
             .list-group
-              %a.list-group-item{:href => '#/songs/{{song.identifier}}', :ng => {:repeat => 'song in songsCtrl.songs'}}
+              %a.list-group-item{:ng => {:click => 'songsCtrl.setActive(song)',
+                                         :repeat => 'song in songsCtrl.songs()',
+                                         :class => "{ 'active': song.active }"}}
                 {{ song.title }} -
                 %i
                   {{ song.artist }}
@@ -33,7 +35,7 @@
                 %h4
                   {{ songsCtrl.activeSong.title }}
               %div{:ng => {:hide => 'songsCtrl.activeSong'}}
-                Wählen Sie einen Song aus
+                Choose a song on the left
         .col-sm-3
           .panel.panel-default
             .panel-heading
