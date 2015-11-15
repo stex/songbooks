@@ -7,6 +7,9 @@ app.controller 'SongsController', ['$http', 'songService', '$location', ($http, 
   @setActive = (song) ->
     $location.path("/songs/#{song.identifier}")
 
+  @activeSong = () ->
+    songService.activeSong
+
   @
 ]
 

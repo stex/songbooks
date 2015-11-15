@@ -28,14 +28,7 @@
 
         .col-sm-6
           .panel.panel-default
-            .panel-heading
-              %h3.panel-title Inhalt
             .panel-body#main-content{:ng => {:view => true}}
-              %div{:ng => {:show => 'songsCtrl.activeSong'}}
-                %h4
-                  {{ songsCtrl.activeSong.title }}
-              %div{:ng => {:hide => 'songsCtrl.activeSong'}}
-                Choose a song on the left
         .col-sm-3
           .panel.panel-default
             .panel-heading

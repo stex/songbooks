@@ -8,6 +8,9 @@
       this.setActive = function(song) {
         return $location.path("/songs/" + song.identifier);
       };
+      this.activeSong = function() {
+        return songService.activeSong;
+      };
       return this;
     }
   ]);

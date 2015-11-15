@@ -9,5 +9,8 @@ song-component {
   font-family: "Courier New", Courier, monospace;
   display: inline-block; }
 
+chord {
+  color: darkred; }
+
 a[ng-click] {
   cursor: pointer; }

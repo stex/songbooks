@@ -12,6 +12,10 @@ song-component {
   display: inline-block;
 }
 
+chord {
+  color: darkred;
+}
+
 a {
   &[ng-click] {
     cursor: pointer;
