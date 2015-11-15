@@ -2,6 +2,7 @@
   app.controller('SongsController', [
     '$http', 'songService', '$location', function($http, songService, $location) {
       songService.loadSongs();
+      this.filterQuery = '';
       this.songs = function() {
         return songService.songs;
       };

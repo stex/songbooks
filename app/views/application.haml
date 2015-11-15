@@ -18,13 +18,16 @@
                 Available Songs
                 %br/
                 %small= Songbooks.chords_directory.path
-            .list-group
-              %a.list-group-item{:ng => {:click => 'songsCtrl.setActive(song)',
-                                         :repeat => 'song in songsCtrl.songs()',
-                                         :class => "{ 'active': song.active }"}}
-                {{ song.title }} -
-                %i
+            .list-group#songs
+              .list-group-item
+                %input.form-control{:type => 'text', :ng => {:model => 'songsCtrl.filterQuery'}}
+              %a.list-group-item{:ng => {:click  => 'songsCtrl.setActive(song)',
+                                         :repeat => 'song in songsCtrl.songs() | filter: songsCtrl.filterQuery',
+                                         :class  => "{ 'active': song.active }"}}
+                %small
                   {{ song.artist }}
+                %br/
+                {{ song.title }}
 
         .col-sm-6
           .panel.panel-default

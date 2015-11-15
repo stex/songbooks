@@ -1,6 +1,8 @@
 app.controller 'SongsController', ['$http', 'songService', '$location', ($http, songService, $location) ->
   songService.loadSongs()
 
+  @filterQuery = ''
+
   @songs = () ->
     songService.songs
 

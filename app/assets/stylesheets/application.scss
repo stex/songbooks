@@ -7,6 +7,11 @@ body {
   overflow-x: auto;
 }
 
+#songs {
+  max-height: 700px;
+  overflow: scroll;
+}
+
 song-component {
   font-family: "Courier New", Courier, monospace;
   display: inline-block;

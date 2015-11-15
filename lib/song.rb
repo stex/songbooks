@@ -51,11 +51,11 @@ class Song
     current_section = SongComponents::Section.new('Initial', true)
 
     text.lines.each do |row|
-      if row =~Song::SECTION_REGEXP
+      if row =~ Song::SECTION_REGEXP
         sections << current_section
         section_name    = row.match(Song::SECTION_REGEXP)[1]
         current_section = SongComponents::Section.new(section_name)
-      elsif row =~Song::CHORDS_LINE_REGEXP
+      elsif row =~ Song::CHORDS_LINE_REGEXP
         current_section.add_line parse_chords_row(row)
       else
         current_section.add_line [SongComponents::Literal.new(row.rstrip)]
