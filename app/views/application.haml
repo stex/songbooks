@@ -5,9 +5,10 @@
     %link{:href => '/stylesheets/bootstrap-theme.min.css', :rel => 'stylesheet'}/
     %link{:href => '/stylesheets/application.css', :rel => 'stylesheet'}/
 
-    - %w(jquery-2.1.4.min angular angular-route angular-local-storage application directives filter routes services controller).each do |file|
+    - %w(jquery-2.1.4.min angular angular-route angular-local-storage application routes).each do |file|
       %script{:src => "/javascripts/#{file}.js", :type => 'text/javascript'}
-    - Songbooks.public_dir
+    - Songbooks::ViewHelper.javascripts.each do |file|
+      %script{:src => "/javascripts/#{file}", :type => 'text/javascript'}
 
     %title
       Songbooks
