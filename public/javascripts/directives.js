@@ -1,4 +1,11 @@
 (function() {
+  app.directive('song', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'static/songs/song'
+    };
+  });
+
   app.directive('chord', function() {
     return {
       restrict: 'E',

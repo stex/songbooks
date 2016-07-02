@@ -26,3 +26,9 @@ a {
     cursor: pointer;
   }
 }
+
+@media only print {
+  .panel {
+    border: none;
+  }
+}

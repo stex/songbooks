@@ -17,5 +17,12 @@ module SongComponents
     def lines
       @content_lines
     end
+
+    def transpose!(count)
+      lines.flatten.each do |component|
+        next unless component.is_a?(SongComponents::Chord)
+        component.transpose!(count)
+      end
+    end
   end
 end

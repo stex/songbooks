@@ -12,6 +12,9 @@ app.controller 'SongsController', ['$http', 'songService', '$location', ($http, 
   @activeSong = () ->
     songService.activeSong
 
+  @addAllToBook = () ->
+    songService.addAllToBook()
+
   @
 ]
 

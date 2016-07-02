@@ -36,6 +36,19 @@ class Song
     result
   end
 
+  def longest_section_caption
+    sections.map(&:name).sort_by(&:length).last
+  end
+
+  def transpose!(count)
+    return if count == 0
+    song.sections.each { |section| section.transpose!(count) }
+  end
+
+  def transpose(count)
+    dup.transpose!(count)
+  end
+
   private
 
   def parse_file

@@ -2,8 +2,9 @@ module Songbooks
   module Controllers
     class SongsController < Controller
 
-      def initialize(params = {})
+      def initialize(params = {}, session = {})
         @params = params
+        @session = session
       end
 
       def index
@@ -15,6 +16,11 @@ module Songbooks
         @template = 'songs/show'
 
         @song = Songbooks.chords_directory.song_list.songs.select {|s| s.identifier == @params['identifier']}.first
+      end
+
+      def generate
+        @songs = Songbooks.chords_directory.song_list.songs.select { |s| @session['songbook'].include?(s.identifier) }
+        @songs.sort_by! {|s| @session['songbook'].index(s.identifier)}
       end
 
     end

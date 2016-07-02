@@ -12,6 +12,9 @@
       this.activeSong = function() {
         return songService.activeSong;
       };
+      this.addAllToBook = function() {
+        return songService.addAllToBook();
+      };
       return this;
     }
   ]);

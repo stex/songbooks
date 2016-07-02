@@ -10,4 +10,11 @@ module Songbooks
     self.root.join('lib')
   end
 
+  def self.font_file(name)
+    root.join('app', 'fonts', "#{name}.ttf").to_s
+  end
+
+  def self.public_dir
+    root.join('public')
+  end
 end

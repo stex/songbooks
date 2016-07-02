@@ -1,3 +1,9 @@
+app.directive 'song', () ->
+  {
+    restrict: 'E',
+    templateUrl: 'static/songs/song'
+  }
+
 app.directive 'chord', () ->
   {
   restrict: 'E',
@@ -10,7 +16,7 @@ app.directive 'chord', () ->
 app.directive 'literal', () ->
   {
   restrict: 'E',
-  templateUrl: 'static/songs/literal',
+  templateUrl: 'static/songs/literal'
   }
 
 app.directive 'songComponent', () ->
