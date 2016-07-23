@@ -1,20 +1,32 @@
 module Songbooks
+  # Gem requires
+  require 'haml'
+  require 'sinatra'
+  require 'active_support/all'
+  require 'prawn'
+  require 'sinatra/prawn'
+  require 'sinatra/jbuilder'
+  require 'json'
 
-  cattr_accessor :chords_directory, :chords_directory_path
+  # Ruby requires
+  require 'pathname'
+
+  # Internal requires
+  require 'songbooks/folder'
 
   def self.root
-    Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
-  end
-
-  def self.lib_dir
-    self.root.join('lib')
+    Pathname.new(File.dirname(__dir__))
   end
 
   def self.font_file(name)
     root.join('app', 'fonts', "#{name}.ttf").to_s
   end
 
-  def self.public_dir
-    root.join('public')
+  def self.initialize_folder(directory_path)
+    @folder = Songbooks::Folder.new(directory_path)
+  end
+
+  def self.folder
+    @folder
   end
 end

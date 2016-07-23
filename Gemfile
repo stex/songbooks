@@ -1,15 +1,4 @@
 source 'https://rubygems.org'
-gem 'haml'
-gem 'sinatra'
-gem 'activesupport'
-gem 'prawn'
-gem 'thin'
-gem 'sass'
-gem 'coffee'
-gem 'guard'
-gem 'guard-coffeescript'
-gem 'guard-sass'
-gem 'byebug'
-gem 'json'
-gem 'tilt-jbuilder', :require => 'sinatra/jbuilder'
-gem 'sinatra-prawn', :github => 'danielberkompas/sinatra-prawn'
+
+# Specify your gem's dependencies in songbooks.gemspec
+gemspec

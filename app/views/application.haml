@@ -23,7 +23,7 @@
                 Available Songs
                 %a.btn.btn-default.btn-sm.pull-right{:ng => {:click => 'songsCtrl.addAllToBook()'}} +
                 %br/
-                %small= Songbooks.chords_directory.path
+                %small= Songbooks.folder.path
             .list-group#songs
               .list-group-item
                 %input.form-control{:type => 'text', :ng => {:model => 'songsCtrl.filterQuery'}}

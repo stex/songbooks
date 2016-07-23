@@ -1,5 +1,6 @@
 app.directive 'literal', () ->
   {
     restrict: 'E',
-    templateUrl: 'static/songs/literal'
+    template: '{{ component.content | convertWhitespace }}'
   }
+

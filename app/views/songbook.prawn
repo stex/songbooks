@@ -32,9 +32,9 @@ pdf.start_new_page
 
         line.each do |component|
           case component
-            when SongComponents::Literal
+            when Songbooks::Components::Literal
               pdf.draw_text component.to_s, :at => [line_x, song_y]
-            when SongComponents::Chord
+            when Songbooks::Components::Chord
               pdf.fill_color '8B0000'
               pdf.draw_text component.to_s, :at => [line_x, song_y]
               pdf.fill_color '000000'

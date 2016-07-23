@@ -1,3 +1,5 @@
+require 'songbooks/controllers/controller'
+
 module Songbooks
   module Controllers
     class SongsController < Controller
@@ -7,22 +9,21 @@ module Songbooks
         @session = session
       end
 
+      attr_reader :session, :params
+
       def index
-        @songs    = Songbooks.chords_directory.song_list.songs
+        @songs    = Songbooks.folder.songs
         @template = 'songs/index'
       end
 
       def show
+        @song = Songbooks.folder.song(params['identifier'])
         @template = 'songs/show'
-
-        @song = Songbooks.chords_directory.song_list.songs.select {|s| s.identifier == @params['identifier']}.first
       end
 
       def generate
-        @songs = Songbooks.chords_directory.song_list.songs.select { |s| @session['songbook'].include?(s.identifier) }
-        @songs.sort_by! {|s| @session['songbook'].index(s.identifier)}
+        @songs = @session['songbook'].map { |id| Songbooks.folder.song(id) }
       end
-
     end
   end
 end
