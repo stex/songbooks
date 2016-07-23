@@ -6,7 +6,7 @@ module Songbooks
       #                          CONSTANTS
       #----------------------------------------------------------------
 
-      NOTES = %w(C Db D Eb E F Gb G Ab A Bb B)
+      NOTES = %w(C Db D Eb E F Gb G Ab A Bb B).freeze
 
       NOTE_MAPPING = [
           %w(C# Db),
@@ -20,14 +20,14 @@ module Songbooks
       ].each_with_object({}) do |(n1, n2), h|
         h[n1] = n2
         h[n2] = n1
-      end
+      end.freeze
 
-      CHORD_REGEXP = /[A-G](?:b|#)?(?:(?:m(?:aj)?|M|aug|dim|sus)?(?:[2-7]|9|13)?)?(?:\/[A-G](?:b|#)?)?/
-      NOTE_REGEXP  = /\A[A-G](b|#)*/
+      CHORD_REGEXP = /[A-G](?:b|#)?(?:(?:m(?:aj)?|M|aug|dim|sus)?(?:[2-7]|9|13)?)?(?:\/[A-G](?:b|#)?)?/.freeze
+      NOTE_REGEXP  = /\A[A-G](b|#)*/.freeze
 
       # A chord in a line has to appear either right before a space or punctuation symbol
       # or be the only thing left in a string
-      CHORD_OCCURRENCE_REGEXP = /\A(#{CHORD_REGEXP})(?:\s+|[\.,\|])|\A(#{CHORD_REGEXP})\z/
+      CHORD_OCCURRENCE_REGEXP = /\A(#{CHORD_REGEXP})(?:\s+|[\.,\|])|\A(#{CHORD_REGEXP})\z/.freeze
 
       #----------------------------------------------------------------
       #                            Parsing

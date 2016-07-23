@@ -6,12 +6,12 @@ module Songbooks
       #                        CONSTANTS
       #----------------------------------------------------------------
 
-      EMPTY_LINE_REGEXP = /\A\s*\r?\n/
+      EMPTY_LINE_REGEXP = /\A\s*\r?\n/.freeze
 
       REGEXPS = {
           :title  => /\A@title\s*\r?\n?([^\n\r]+)/,
           :artist => /\A@artist\s*\r?\n?([^\n\r]+)/,
-      }
+      }.freeze
 
       #----------------------------------------------------------------
       #                           Parsing
