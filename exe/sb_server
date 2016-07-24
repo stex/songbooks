@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'songbooks'
+require 'songbooks/CLI'
+Songbooks::CLI.start

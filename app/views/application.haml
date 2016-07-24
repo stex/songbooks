@@ -1,0 +1,54 @@
+!!! 5
+%html{'ng-app' => 'songbooks', 'ng-controller' => 'SongsController as songsCtrl'}
+  %head
+    %link{:href => '/stylesheets/bootstrap.min.css', :rel => 'stylesheet'}/
+    %link{:href => '/stylesheets/bootstrap-theme.min.css', :rel => 'stylesheet'}/
+    %link{:href => '/stylesheets/application.css', :rel => 'stylesheet'}/
+
+    - %w(jquery-2.1.4.min angular angular-route angular-local-storage application routes).each do |file|
+      %script{:src => "/javascripts/#{file}.js", :type => 'text/javascript'}
+    - Songbooks::ViewHelper.javascripts.each do |file|
+      %script{:src => "/javascripts/#{file}", :type => 'text/javascript'}
+
+    %title
+      Songbooks
+
+  %body{:ng => {:controller => 'SongbookController as songbook'}}
+    .container-fluid
+      .row
+        .col-sm-3.hidden-print
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title
+                Available Songs
+                %a.btn.btn-default.btn-sm.pull-right{:ng => {:click => 'songsCtrl.addAllToBook()'}} +
+                %br/
+                %small= Songbooks.folder.path
+            .list-group#songs
+              .list-group-item
+                %input.form-control{:type => 'text', :ng => {:model => 'songsCtrl.filterQuery'}}
+              .list-group-item{:ng => {:click  => 'songsCtrl.setActive(song)',
+                                       :repeat => 'song in songsCtrl.songs() | filter: songsCtrl.filterQuery',
+                                       :class  => "{ 'active': song.active }"},
+                                       :style  => 'cursor: default'}
+                %span.pull-right
+                  %a.btn.btn-sm.btn-default{:ng => {:click => 'songbook.addSong(song)'}} +
+                %song
+        .col-sm-6
+          .panel.panel-default
+            .panel-body#main-content{:ng => {:view => true}}
+        .col-sm-3.hidden-print
+          .panel.panel-default
+            .panel-heading
+              %h3.panel-title
+                {{ songbook.title() }}
+                %a.btn.btn-default.btn-sm.pull-right{:ng => {:click => 'songbook.sendToServer()'}} PDF
+                %a.btn.btn-default.btn-sm.pull-right{:ng => {:click => 'songbook.clear()'}} Clear
+                .clearfix
+            .list-group#songs
+              .list-group-item
+                %input.form-control{:type => 'text', :ng => {:model => 'songbook.filterQuery'}}
+              .list-group-item{:ng => {:repeat => 'song in songbook.songs() | filter: songbook.filterQuery'}}
+                %span.pull-right
+                  %a.btn.btn-sm.btn-default{:ng => {:click => 'songbook.removeSong(song)'}} -
+                %song
