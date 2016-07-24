@@ -17,6 +17,8 @@ Believe, believe the Dragonborn comes
 
 It allows you to view all songs in a certain directory and generate PDF songbooks from them.
 
+![Server](docs/server_screenshot.png)
+
 ## Installation
 
 Simply install the gem using a ruby version >= 2.2:
@@ -37,9 +39,41 @@ This means, the following commands are equivalent:
     
 Afterwards, open http://localhost:4567 in your browser and you're good to go.
 
+## Annotations / Special Lines
+
+The server automatically searches for certain patterns in the chord files: 
+Song metadata and formatting information.
+
+### Metadata
+Currently, only song title and artist are available as metadata. You may specify them by adding 
+the following lines to your chord files:
+
+    @artist NAME
+    @title SONG_TITLE
+    
+Name/Title don't have to be in the same line as the annotation, the following lines are totally 
+valid as well:
+
+```
+@title
+The Dragonborn comes
+
+@artist
+Skyrim OST (Cover by Malukah)
+```
+
+### Formatting
+
+As seen in the above screenshot, it is possible to specify sections in your 
+chord files. Each file starts with an initial unnamed section. To create a named section,
+add a line in the following format to your file:
+
+    ## SECTION NAME
+
 ## Planned features
 
 - Chord transposing
+- Better handling of chord files without annotations
 - Better PDF formatting
 - PDF generation from command line, e.g. `sb_server generate_songbook --out file.pdf [DIRECTORY]`
 
