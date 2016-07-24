@@ -7,6 +7,7 @@ module Songbooks
   require 'sinatra/prawn'
   require 'sinatra/jbuilder'
   require 'json'
+  require 'listen'
 
   # Ruby requires
   require 'pathname'

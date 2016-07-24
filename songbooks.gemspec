@@ -39,6 +39,9 @@ Gem::Specification.new do |spec|
   # CLI
   spec.add_dependency 'thor', '~> 0.19'
 
+  # File watchers
+  spec.add_dependency 'listen', '~> 3.1'
+
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
