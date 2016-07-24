@@ -1,39 +1,62 @@
 # Songbooks
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/songbooks`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem will run a simply web server to format / display chord files.   
+A chord file - at least here - is a text file with lyrics and chords for a certain song:
+ 
+```
+    Bm                    A        Bm
+Our Hero, our Hero claims a warrior's heart
+  Bm                     A         Bm
+I tell you, I tell you the Dragonborn comes
+       Bm                       A9         Bm
+With a voice wielding power of the ancient Nord Art
+  Bm                 A9         Bm
+Believe, believe the Dragonborn comes
+```
+([Malukah](www.malukah.com/)'s version of Skyrim's "The Dragonborn comes")
 
-TODO: Delete this and the text above, and describe your gem
+It allows you to view all songs in a certain directory and generate PDF songbooks from them.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'songbooks'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Simply install the gem using a ruby version >= 2.2:
 
     $ gem install songbooks
 
 ## Usage
 
-TODO: Write usage instructions here
+To start a songbooks server in a certain directory, use the following command:
+
+    $ sb_server start [DIRECTORY]
+    
+If you don't specify a directory, the server will use the directory you are currently in.
+This means, the following commands are equivalent:
+
+    $ sb_server start /path/to/chords
+    $ cd /path/to/chords && sb_server start
+    
+Afterwards, open http://localhost:4567 in your browser and you're good to go.
+
+## Planned features
+
+- Chord transposing
+- Better PDF formatting
+- PDF generation from command line, e.g. `sb_server generate_songbook --out file.pdf [DIRECTORY]`
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. 
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+The project contains a `Guardfile` to automatically generate css and javascript files from 
+coffeescript and scss, so make sure you start guard before changing anything in `app/assets`:
+
+    $ guard
+
+To install this gem onto your local machine, run `bundle exec rake install`. 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/songbooks.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/stex/songbooks.
 
 ## License
 
